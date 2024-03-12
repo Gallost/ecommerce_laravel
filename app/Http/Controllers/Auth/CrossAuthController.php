@@ -9,8 +9,8 @@ use Auth;
 class CrossAuthController extends Controller
 {
     public function authenticate(Request $request) {
-        $user = Auth::user();
-        if (!isset($user)) return redirect()->guest('login');
-        return response()->json(['uid' => $user->id]);
+        $credentials = $request->only("email", "password");
+        if (Auth::attempt($credentials))
+            return response()->json(['uid' => Auth::user()->id]);
     }
 }

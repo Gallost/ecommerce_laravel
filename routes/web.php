@@ -32,4 +32,4 @@ Route::get('/cart', 'App\Http\Controllers\ProductController@getCartView')->name(
 
 Route::post('/clear-cart', 'App\Http\Controllers\ProductController@clearCart')->name('cart.clear');
 
-Route::get('/cross-auth', 'App\Http\Controllers\Auth\CrossAuthController@authenticate');
+Route::post('/cross-auth', 'App\Http\Controllers\Auth\CrossAuthController@authenticate');
