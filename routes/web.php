@@ -31,3 +31,5 @@ Route::get('/add-to-cart/{id}', 'App\Http\Controllers\ProductController@addToCar
 Route::get('/cart', 'App\Http\Controllers\ProductController@getCartView')->name('product.viewCart');
 
 Route::post('/clear-cart', 'App\Http\Controllers\ProductController@clearCart')->name('cart.clear');
+
+Route::get('/cross-auth', 'App\Http\Controllers\Auth\CrossAuthController@authenticate');
