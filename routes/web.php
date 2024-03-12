@@ -21,3 +21,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/catalogue', 'App\Http\Controllers\ProductController@getCatalogueView');
+
+Route::get('/item/{id}', 'App\Http\Controllers\ProductController@getItemView')->name('product.show');
+
+Route::get('/add-to-cart/{id}', 'App\Http\Controllers\ProductController@addToCart')->name('product.addToCart');
+
+Route::get('/cart', 'App\Http\Controllers\ProductController@getCartView')->name('product.viewCart');
+
+Route::post('/clear-cart', 'App\Http\Controllers\ProductController@clearCart')->name('cart.clear');
