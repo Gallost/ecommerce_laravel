@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/catalogue', 'App\Http\Controllers\ProductController@getCatalogueView');
+Route::get('/catalogue', 'App\Http\Controllers\ProductController@getCatalogueView')->name('catalogue');
 
 Route::get('/item/{id}', 'App\Http\Controllers\ProductController@getItemView')->name('product.show');
 

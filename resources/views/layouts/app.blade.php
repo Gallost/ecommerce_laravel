@@ -13,6 +13,8 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <link href="app.css" rel="stylesheet">
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -20,8 +22,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-logo-container" href="{{ url('/') }}">
+                    <img class="navbar-logo" src="/res/squirtle.png" alt="" height="32px" width="32px"/>
+                    <p class="navbar-brand navbar-logo-title">{{ config('app.name', 'Laravel') }}</p>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -30,7 +33,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -65,6 +67,13 @@
                                         @csrf
                                     </form>
                                 </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link cart-link" href="{{route('product.viewCart')}}">
+                                    <img src="/res/cart.svg" width="28px" height="28px" alt=""/>
+                                    <label class="cartCount badge-warning"> {{count($cartItems)}} </label>
+                                    Cart
+                                </a>
                             </li>
                         @endguest
                     </ul>

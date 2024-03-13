@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        if (!isset($user))
+            return redirect()->guest('login');
+        $productIDs = array_keys(json_decode($user->cart, true));
+        return view('home')
+            ->with('cartItems', Products::whereIn('id', $productIDs)->get());
     }
 }

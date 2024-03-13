@@ -1,0 +1,38 @@
+.cartCount {
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 4px;
+  background-color: #9BC3D1;
+  position: relative;
+  font-size: 12px;
+  left: -8px;
+  top: -10px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+
+.navbar-logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navbar-logo {
+  
+}
+
+.navbar-logo-title {
+  font-weight: 500;
+  margin: 0 0 0 8px !important;
+  padding: 0 !important;
+  text-decoration: none;
+}
+
+.cart-link {
+  font-weight: 600 !important;
+}
