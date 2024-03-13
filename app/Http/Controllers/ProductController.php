@@ -15,7 +15,8 @@ class ProductController extends Controller
 
     public function getCatalogueView(Request $request) {
         return view('catalogue')
-            ->with('products', Products::all());
+            ->with('products', Products::all())
+            ->with('cartItems', Auth::check() ? Auth::user()->cartItems : []);
     }
 
     public function getItemView(Request $request, $id) {
@@ -23,15 +24,15 @@ class ProductController extends Controller
             ->with('product', Products::find($id));
     }
 
-    public function addToCart(Request $request, $id) {
+    public function addToCart(Request $request) {
         $user = Auth::user();
         if (!isset($user))
             return redirect()->guest('login');
         $cart = json_decode($user->cart, true);
-        $cart[$id] = null;
+        $cart[$request->id] = null;
         $user->cart = $cart;
         $user->save();
-        return back();
+        return response()->json("Added item $request->id to cart.");
     }
 
     public function getCartView(Request $request) {
@@ -40,7 +41,7 @@ class ProductController extends Controller
             return redirect()->guest('login');
         $productIDs = array_keys(json_decode($user->cart, true));
         return view('cart')
-            ->with('cartItems', Products::whereIn('id', $productIDs)->get());
+            ->with('cartItems', $user->cartItems);
     }
 
     public function clearCart() {

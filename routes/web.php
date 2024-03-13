@@ -26,7 +26,7 @@ Route::get('/catalogue', 'App\Http\Controllers\ProductController@getCatalogueVie
 
 Route::get('/item/{id}', 'App\Http\Controllers\ProductController@getItemView')->name('product.show');
 
-Route::get('/add-to-cart/{id}', 'App\Http\Controllers\ProductController@addToCart')->name('product.addToCart');
+Route::post('add-to-cart', 'App\Http\Controllers\ProductController@addToCart')->name('product.addToCart');
 
 Route::get('/cart', 'App\Http\Controllers\ProductController@getCartView')->name('product.viewCart');
 
@@ -34,4 +34,4 @@ Route::post('/clear-cart', 'App\Http\Controllers\ProductController@clearCart')->
 
 Route::get('/cross-auth', 'App\Http\Controllers\Auth\CrossAuthController@authenticate');
 
-Route::post(null, 'App\Http\Controllers\ClickStreamController@collect')->name('clickstream.collect');
+Route::post('/clickstream-collect', 'App\Http\Controllers\ClickStreamController@collect')->name('clickstream.collect');

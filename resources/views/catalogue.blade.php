@@ -31,6 +31,31 @@
             });
         }
     });
+
+    function addToCart(elementId) {
+        let id = elementId.split('-')[1];
+        fetch('{{ route("product.addToCart") }}', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log(response.text());
+            }
+            else {
+                console.error('Couldn\'t add to cart.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
 </script>
 
 @section('content')
@@ -49,7 +74,7 @@
                             <p id="price-{{$product->id}}" class="card-text fw-bold">Price: ${{ $product->price }}</p>
                             <div class="btn-group" style="justify-content: space-between; display: flex; gap: 16px">
                                 <a id="detail-{{$product->id}}" href="{{ route('product.show', $product->id) }}" class="btn btn-secondary">View Details</a>
-                                <a id="cart-{{$product->id}}" href="{{ route('product.addToCart', $product->id) }}" class="btn btn-primary">Add To Cart</a>
+                                <a id="cart-{{$product->id}}" onclick="addToCart(this.id)" class="btn btn-primary">Add To Cart</a>
                             </div>
                         </div>
                     </div>

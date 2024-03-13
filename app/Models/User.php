@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Products;
+use Illuminate\Support\Facades\Log;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -42,4 +45,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected $table = 'users';
+
+    public function getCartItemsAttribute() {
+        $productIDs = array_keys(json_decode($this->cart, true));
+        return Products::whereIn('id', $productIDs)->get();
+    }
 }
