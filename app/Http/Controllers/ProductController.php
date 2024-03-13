@@ -19,9 +19,17 @@ class ProductController extends Controller
             ->with('cartItems', Auth::check() ? Auth::user()->cartItems : []);
     }
 
+    public function getCategoryView(Request $request, $categoryName) {
+        return view('category')
+            ->with('categoryName', $categoryName)
+            ->with('products', Products::where('category', $categoryName)->get())
+            ->with('cartItems', Auth::check() ? Auth::user()->cartItems : []);
+    }
+
     public function getItemView(Request $request, $id) {
         return view('product')
-            ->with('product', Products::find($id));
+            ->with('product', Products::find($id))
+            ->with('cartItems', Auth::check() ? Auth::user()->cartItems : []);
     }
 
     public function addToCart(Request $request) {

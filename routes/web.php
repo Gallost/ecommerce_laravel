@@ -35,3 +35,5 @@ Route::post('/clear-cart', 'App\Http\Controllers\ProductController@clearCart')->
 Route::get('/cross-auth', 'App\Http\Controllers\Auth\CrossAuthController@authenticate');
 
 Route::post('/clickstream-collect', 'App\Http\Controllers\ClickStreamController@collect')->name('clickstream.collect');
+
+Route::get('/category/{categoryName}', 'App\Http\Controllers\ProductController@getCategoryView')->name('category.show');
