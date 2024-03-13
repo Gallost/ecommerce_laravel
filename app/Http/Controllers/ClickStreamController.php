@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\Models\Clickstream;
+use App\Models\ClickstreamRaw;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 
@@ -28,7 +28,7 @@ class ClickStreamController extends Controller
             return response()->json($e);
         }
 
-        Clickstream::create([
+        ClickstreamRaw::on('protoshell')->create([
             'target' => $target,
             'click_page' => $route,
             'ip' => $request->ip(),
