@@ -20,6 +20,7 @@ class ProductsFactory extends Factory
             'name' =>  fake()->sentence(2),
             'description' => fake()->sentence(10),
             'price' => fake()->randomFloat(2, 10, 100),
+            'category' => fake()->randomElement(['Electronics', 'Clothing', 'Books', 'Home', 'Garden', 'Food']),
             'image_url' => 'https://icon-library.com/images/placeholder-image-icon/placeholder-image-icon-17.jpg'
         ];
     }

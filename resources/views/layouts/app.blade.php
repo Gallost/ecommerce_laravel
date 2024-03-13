@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'ProtoShop') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -22,9 +22,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-logo-container" href="{{ url('/') }}">
+                <a class="navbar-logo-container" href="{{ url('/catalogue') }}">
                     <img class="navbar-logo" src="/res/squirtle.png" alt="" height="32px" width="32px"/>
-                    <p class="navbar-brand navbar-logo-title">{{ config('app.name', 'Laravel') }}</p>
+                    <p class="navbar-brand navbar-logo-title">{{ config('app.name', 'ProtoShop') }}</p>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -80,7 +80,24 @@
                 </div>
             </div>
         </nav>
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="{{ route('category.show', 'Home') }}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('category.show', 'Electronics') }}">Electronics</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('category.show', 'Clothing') }}">Clothing</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('category.show', 'Books') }}">Books</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('category.show', 'Garden') }}">Garden</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('category.show', 'Food') }}">Food</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <main class="py-4">
             @yield('content')
         </main>
