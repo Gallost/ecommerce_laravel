@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\ClickstreamPerms;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -63,10 +64,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $newUser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'cart' => json_encode([])
         ]);
+
+        ClickstreamPerms::on('protoshell')->create([
+            'id' => $newUser->id,
+            'target' => 1,
+            'click_page' => 1,
+            'ip' => 1,
+            'loc' => 1,
+            'geoloc' => 1,
+            'device' => 1
+        ]);
+
+        return $newUser;
     }
 }

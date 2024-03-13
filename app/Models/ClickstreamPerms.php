@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ClickstreamRaw extends Model
+class ClickstreamPerms extends Model
 {
     use HasFactory;
-    protected $table = 'clickstream_raw';
+    protected $table = 'clickstream_perms';
     protected $fillable = [
         'id',
         'target',
